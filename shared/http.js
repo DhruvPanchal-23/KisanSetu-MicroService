@@ -38,8 +38,9 @@ export function start(app, defaultPort) {
   });
   const PORT = Number(process.env.PORT) || defaultPort;
   const host = process.env.HOST || '0.0.0.0';
-  const server = app.listen(PORT, host, () => console.log(`Service running on port ${PORT}`));
-  server.on('error', error => { console.error('Cannot start service:', error.message); process.exitCode = 1; });
+  const name = process.env.SERVICE_NAME || 'Service';
+  const server = app.listen(PORT, host, () => console.log(`${name} running on port ${PORT}`));
+  server.on('error', error => { console.error(`Cannot start ${name} on port ${PORT}:`, error.message); process.exitCode = 1; });
   for (const signal of ['SIGINT', 'SIGTERM']) {
     process.once(signal, () => { server.close(() => process.exit(0)); server.closeIdleConnections(); });
   }

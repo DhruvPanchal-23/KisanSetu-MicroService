@@ -28,7 +28,7 @@ function stop(code = 0) {
 }
 for (const [folder, port] of [['auth-service', 8001], ['farm-service', 8002], ['weather-service', 8003], ['gateway', 8000]]) {
   children.push(spawn(process.execPath, [resolve(root, folder, 'main.js')], { cwd: root,
-    env: { ...env, PORT: String(port) }, stdio: 'inherit' }));
+    env: { ...env, PORT: String(port), SERVICE_NAME: folder }, stdio: 'inherit' }));
 }
 if (frontend) children.push(spawn(process.execPath, [vite, '--host', '127.0.0.1', '--strictPort'], { cwd: resolve(root, 'frontend'), env, stdio: 'inherit' }));
 for (const child of children) {

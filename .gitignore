@@ -1,6 +1,19 @@
 .env
 .env.*
-!.env.example
+*.yaml
+*.yml
+README.md
+Dockerfile
+package.json
+package-lock.json
+
+.aws/
+credentials
+id_rsa
+id_ed25519
+secrets/
+*.secret
+*.credentials
 
 node_modules/
 **/node_modules/
