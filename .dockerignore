@@ -1,0 +1,16 @@
+node_modules
+**/node_modules
+frontend
+.env
+.env.*
+**/.env
+**/.env.*
+.git
+**/.git
+**/storage
+**/*.db
+**/*.db-*
+tests
+test-results
+**/coverage
+**/*.log

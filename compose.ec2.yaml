@@ -1,0 +1,11 @@
+# Use with: docker compose -f docker-compose.yml -f compose.ec2.yaml up -d --build --wait
+# Requires Docker Compose 2.24.4 or newer for !override.
+services:
+  frontend:
+    ports: !override
+      - "80:80"
+    build:
+      args:
+        VITE_API_URL: /api
+  gateway:
+    ports: !override []
